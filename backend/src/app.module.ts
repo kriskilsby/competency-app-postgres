@@ -1,5 +1,6 @@
+// src/app.module.ts
 import * as dotenv from 'dotenv';
-dotenv.config({ path: './.env' }); // <-- must be before using process.env
+dotenv.config({ path: './.env' }); // <-- load .env first
 
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
@@ -28,8 +29,9 @@ import { ClassificationTypeModule } from './classification-type/classification-t
 import { ClassificationValueModule } from './classification-value/classification-value.module';
 import { ExperienceClassificationModule } from './experience-classification/experience-classification.module';
 
+import { getEnv } from './config';
+
 console.log('CWD:', process.cwd());
-// console.log('DB_HOST:', process.env.DB_HOST);
 console.log('ENV FILE CHECK DONE');
 
 @Module({
@@ -37,11 +39,11 @@ console.log('ENV FILE CHECK DONE');
     // 🔹 Database connection (Azure SQL)
     TypeOrmModule.forRoot({
       type: 'mssql',
-      host: process.env.DB_HOST!.trim(),
-      port: 1433,
-      username: process.env.DB_USER!.trim(),
-      password: process.env.DB_PASSWORD!.trim(),
-      database: process.env.DB_NAME!.trim(),
+      host: getEnv('DB_HOST'),
+      port: Number(getEnv('DB_PORT', '1433')),
+      username: getEnv('DB_USER'),
+      password: getEnv('DB_PASSWORD'),
+      database: getEnv('DB_NAME'),
       entities: [__dirname + '/**/*.entity{.ts,.js}'],
       synchronize: true, // ✅ For dev only, remove in production
       options: {
@@ -50,7 +52,7 @@ console.log('ENV FILE CHECK DONE');
       },
     }),
 
-    // 🔹 Existing feature modules (unchanged)
+    // 🔹 Existing feature modules
     AuthModule,
     CompetenciesModule,
     LlmModule,
