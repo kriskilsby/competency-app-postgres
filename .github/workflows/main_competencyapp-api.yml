@@ -30,11 +30,12 @@ jobs:
           npm run build
           npm run test --if-present
 
+      # Upload artifact for deployment 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v4
         with:
           name: node-app
-          path: backend/dist
+          path: backend/dist/** # <-- include all files inside dist
 
   deploy:
     runs-on: ubuntu-latest
@@ -62,6 +63,7 @@ jobs:
         with:
           app-name: 'competencyapp-api'
           slot-name: 'Production'
-          package: node-app
+          package: node-app/** # <-- include all files in artifact
 
           
+
