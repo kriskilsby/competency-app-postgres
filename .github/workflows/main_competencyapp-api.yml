@@ -29,6 +29,15 @@ jobs:
         with:
           node-version: '22.x'
 
+      - name: Debug env vars
+        run: |
+          echo "DB_HOST=$DB_HOST"
+          echo "DB_USER=$DB_USER"
+        env:
+          DB_HOST: ${{ secrets.DB_HOST }}
+          DB_USER: ${{ secrets.DB_USER }}
+      
+
       # 3. Install dependencies and build
       - name: Install, build, and test
         run: |
@@ -85,3 +94,4 @@ jobs:
             az webapp config set --name ${{ env.AZURE_APP_NAME }} \
               --resource-group ${{ env.AZURE_RESOURCE_GROUP }} \
               --startup-file "npm run start:prod"
+
