@@ -50,8 +50,8 @@ console.log('ENV FILE CHECK DONE');
       password: getEnv('DB_PASSWORD'),
       database: getEnv('DB_NAME'),
       entities: [__dirname + '/**/*.entity{.ts,.js}'],
-      synchronize: true, // ✅ For dev only, remove in production
-      logging: true,
+      synchronize: false, // ✅ Use 'true' For dev only, remove in production
+      logging: ['error', 'warn'],
       options: {
         encrypt: true,
         trustServerCertificate: false,
