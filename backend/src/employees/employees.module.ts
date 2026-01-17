@@ -1,7 +1,8 @@
+// backend/src/employees/employees.module.ts
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { Employee } from './employee.entity';
 import { EmployeesController } from './employees.controller';
+import { Employee } from './employee.entity';
 import { Qualification } from '../qualifications/qualification.entity';
 import { EmployeeProjectExperience } from '../employee-project-experience/employee-project-experience.entity';
 import { Cpd } from '../cpd/cpd.entity';
@@ -12,7 +13,7 @@ import { Cpd } from '../cpd/cpd.entity';
       Employee,
       Qualification,
       EmployeeProjectExperience,
-      Cpd
+      Cpd,
     ]),
   ],
   controllers: [EmployeesController],
