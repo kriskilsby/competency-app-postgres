@@ -41,21 +41,17 @@ console.log('ENV FILE CHECK DONE');
 
 @Module({
   imports: [
-    // 🔹 Database connection (Azure SQL)
+    // 🔹 Database connection (POstgreSQL)
     TypeOrmModule.forRoot({
-      type: 'mssql',
-      host: getEnv('DB_HOST'),
-      port: 1433,
-      username: getEnv('DB_USER'),
-      password: getEnv('DB_PASSWORD'),
-      database: getEnv('DB_NAME'),
+      type: 'postgres',
+      host: process.env.DB_HOST,
+      port: 5432,
+      username: process.env.DB_USER,
+      password: process.env.DB_PASSWORD,
+      database: process.env.DB_NAME,
       entities: [__dirname + '/**/*.entity{.ts,.js}'],
       synchronize: false, // ✅ Use 'true' For dev only, remove in production
       logging: ['error', 'warn'],
-      options: {
-        encrypt: true,
-        trustServerCertificate: false,
-      },
     }),
 
     // 🔹 Feature modules
