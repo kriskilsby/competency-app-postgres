@@ -13,12 +13,21 @@ export class LegalEntity {
   @Column({ length: 50, unique: true })
   le_name: string;
 
-  @CreateDateColumn({ type: 'datetime2' })
+  @CreateDateColumn({
+    type: 'timestamp',
+    name: 'le_addDate',
+  })
   le_addDate: Date;
 
-  @Column({ type: 'bit', default: true })
+  @Column({
+    type: 'boolean',
+    default: true,
+  })
   le_active: boolean;
 
-  @Column({ length: 20, default: 'temp' })
+  @Column({
+    length: 20,
+    default: 'temp',
+  })
   data_origin: string;
 }

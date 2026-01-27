@@ -5,7 +5,7 @@ export class ClassificationType {
   @PrimaryGeneratedColumn()
   ct_id: number;
 
-  @Column({ type: 'varchar', length: 100, unique: true })
+  @Column({ length: 100, unique: true })
   ct_name: string;
 
   @Column({ length: 20, default: 'temp' })

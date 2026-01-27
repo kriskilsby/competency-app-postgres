@@ -5,7 +5,7 @@ export class PrimarySector {
   @PrimaryGeneratedColumn()
   ps_id: number;
 
-  @Column({ type: 'varchar', length: 150, unique: true })
+  @Column({ length: 150, unique: true })
   ps_name: string;
 
   @Column({ length: 20, default: 'temp' })

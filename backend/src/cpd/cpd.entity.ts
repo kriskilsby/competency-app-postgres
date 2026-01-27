@@ -5,10 +5,12 @@ import {
   CreateDateColumn,
   ManyToOne,
   JoinColumn,
+  Check,
 } from 'typeorm';
 import { Employee } from '../employees/employee.entity';
 
 @Entity({ name: 'cpd' })
+@Check(`cpd_year BETWEEN 1950 AND 2100`)
 export class Cpd {
   @PrimaryGeneratedColumn()
   cpd_id: number;
@@ -18,22 +20,22 @@ export class Cpd {
   @JoinColumn({ name: 'e_id' })
   employee: Employee;
 
-  @Column({ length: 255 })
+  @Column({ length: 200 })
   cpd_name: string;
 
   @Column({ type: 'int' })
   cpd_year: number;
 
-  @CreateDateColumn({ type: 'datetime2' })
+  @CreateDateColumn({ type: 'timestamp' })
   cpd_addDate: Date;
 
-  @CreateDateColumn({ type: 'datetime2' })
+  @CreateDateColumn({ type: 'timestamp' })
   cpd_eReview: Date;
 
-  @Column({ type: 'datetime2', nullable: true })
+  @Column({ type: 'timestamp', nullable: true })
   cpd_mReview: Date | null;
 
-  @Column({ type: 'bit', default: true })
+  @Column({ type: 'boolean', default: true })
   cpd_active: boolean;
 
   @Column({ length: 20, default: 'temp' })

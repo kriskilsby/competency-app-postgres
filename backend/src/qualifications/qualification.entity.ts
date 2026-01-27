@@ -7,7 +7,6 @@ import {
   JoinColumn,
   Check,
 } from 'typeorm';
-
 import { Employee } from '../employees/employee.entity';
 
 @Entity({ name: 'qualifications' })
@@ -34,16 +33,16 @@ export class Qualification {
   @Column({ type: 'int' })
   q_year: number;
 
-  @CreateDateColumn({ type: 'datetime2' })
+  @CreateDateColumn({ type: 'timestamp' })
   q_addDate: Date;
 
-  @CreateDateColumn({ type: 'datetime2' })
+  @CreateDateColumn({ type: 'timestamp' })
   q_eReview: Date;
 
-  @Column({ type: 'datetime2', nullable: true })
+  @Column({ type: 'timestamp', nullable: true })
   q_mReview: Date | null;
 
-  @Column({ type: 'bit', default: true })
+  @Column({ type: 'boolean', default: true })
   q_active: boolean;
 
   @Column({ length: 20, default: 'temp' })

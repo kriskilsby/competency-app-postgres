@@ -18,7 +18,7 @@ export class EmploymentHistory {
   @PrimaryGeneratedColumn()
   eh_id: number;
 
-  // 🔗 Employee FK
+  // Employee FK
   @ManyToOne(() => Employee, { nullable: false })
   @JoinColumn({ name: 'e_id' })
   employee: Employee;
@@ -38,16 +38,16 @@ export class EmploymentHistory {
   @Column({ type: 'int', nullable: true })
   eh_end: number | null;
 
-  @CreateDateColumn({ type: 'datetime2' })
+  @CreateDateColumn({ type: 'timestamp' })
   eh_addDate: Date;
 
-  @CreateDateColumn({ type: 'datetime2' })
+  @CreateDateColumn({ type: 'timestamp' })
   eh_eReview: Date;
 
-  @Column({ type: 'datetime2', nullable: true })
+  @Column({ type: 'timestamp', nullable: true })
   eh_mReview: Date | null;
 
-  @Column({ type: 'bit', default: true })
+  @Column({ type: 'boolean', default: true })
   eh_active: boolean;
 
   @Column({ length: 20, default: 'temp' })

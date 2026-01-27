@@ -1,19 +1,33 @@
-import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn } from 'typeorm';
+import {
+  Entity,
+  PrimaryGeneratedColumn,
+  Column,
+  CreateDateColumn,
+} from 'typeorm';
 
 @Entity({ name: 'discipline' })
 export class Discipline {
-  @PrimaryGeneratedColumn()        // Auto-increment primary key
+  @PrimaryGeneratedColumn()
   d_id: number;
 
   @Column({ length: 100, unique: true })
   d_name: string;
 
-  @CreateDateColumn({ type: 'datetime2' })  // Default to current timestamp
+  @CreateDateColumn({
+    type: 'timestamp',
+    name: 'd_addDate',
+  })
   d_addDate: Date;
 
-  @Column({ type: 'bit', default: true })
+  @Column({
+    type: 'boolean',
+    default: true,
+  })
   d_active: boolean;
 
-  @Column({ length: 20, default: 'temp' })
+  @Column({
+    length: 20,
+    default: 'temp',
+  })
   data_origin: string;
 }

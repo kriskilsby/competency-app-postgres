@@ -13,15 +13,15 @@ export class ProjectMaster {
   pm_name: string;
 
   @Column({ length: 150, nullable: true })
-  pm_location: string;
+  pm_location: string | null;
 
   @Column({ length: 150, nullable: true })
-  pm_client: string;
+  pm_client: string | null;
 
   @Column({ type: 'text', nullable: true })
-  pm_notes: string;
+  pm_notes: string | null;
 
-  @Column({ type: 'bit', default: true })
+  @Column({ type: 'boolean', default: true })
   pm_active: boolean;
 
   @Column({ length: 20, default: 'temp' })

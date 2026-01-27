@@ -30,11 +30,11 @@ import { DbKeepAliveService } from './db-keep-alive.service';
 import { TestModule } from './test/test.module';
 
 // 🔹 Inline getEnv() helper
-const getEnv = (key: string, defaultValue = ''): string => {
-  const value = process.env[key];
-  if (!value) console.warn(`⚠️ Environment variable ${key} is not set.`);
-  return (value || defaultValue).trim();
-};
+// const getEnv = (key: string, defaultValue = ''): string => {
+//   const value = process.env[key];
+//   if (!value) console.warn(`⚠️ Environment variable ${key} is not set.`);
+//   return (value || defaultValue).trim();
+// };
 
 console.log('CWD:', process.cwd());
 console.log('ENV FILE CHECK DONE');
@@ -42,16 +42,28 @@ console.log('ENV FILE CHECK DONE');
 @Module({
   imports: [
     // 🔹 Database connection (POstgreSQL)
+    // TypeOrmModule.forRoot({
+    //   type: 'postgres',
+    //   host: process.env.DB_HOST,
+    //   port: 5432,
+    //   username: process.env.DB_USER,
+    //   password: process.env.DB_PASSWORD,
+    //   database: process.env.DB_NAME,
+    //   entities: [__dirname + '/**/*.entity{.ts,.js}'],
+    //   synchronize: false, // ✅ Use 'true' For dev only, remove in production
+    //   logging: ['error', 'warn'],
+    // }),
+
     TypeOrmModule.forRoot({
       type: 'postgres',
-      host: process.env.DB_HOST,
-      port: 5432,
-      username: process.env.DB_USER,
-      password: process.env.DB_PASSWORD,
-      database: process.env.DB_NAME,
+      host: String(process.env.DB_HOST).trim(),
+      port: Number(process.env.DB_PORT || 5432),
+      username: String(process.env.DB_USER).trim(),
+      password: String(process.env.DB_PASSWORD).trim(),
+      database: String(process.env.DB_NAME).trim(),
       entities: [__dirname + '/**/*.entity{.ts,.js}'],
-      synchronize: false, // ✅ Use 'true' For dev only, remove in production
-      logging: ['error', 'warn'],
+      synchronize: false,
+      logging: true,
     }),
 
     // 🔹 Feature modules

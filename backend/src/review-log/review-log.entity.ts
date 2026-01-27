@@ -30,10 +30,10 @@ export class ReviewLog {
   @Column({ length: 50 })
   section: string;
 
-  @Column({ type: 'nvarchar', nullable: true })
+  @Column({ type: 'text', nullable: true })
   old_value: string | null;
 
-  @Column({ type: 'nvarchar', nullable: true })
+  @Column({ type: 'text', nullable: true })
   new_value: string | null;
 
   // Who made the update (employee.norseid or manager.norseid)
@@ -41,15 +41,15 @@ export class ReviewLog {
   updated_by: string;
 
   // When update happened
-  @CreateDateColumn({ type: 'datetime2' })
+  @CreateDateColumn({ type: 'timestamp' })
   updated_at: Date;
 
   // Who reviewed the change
-  @Column({ type: 'nvarchar', length: 50, nullable: true })
+  @Column({ length: 50, nullable: true })
   review_by: string | null;
 
   // When review happened
-  @Column({ type: 'datetime2', nullable: true })
+  @Column({ type: 'timestamp', nullable: true })
   review_at: Date | null;
 
   // Pending / Reviewed
@@ -57,7 +57,7 @@ export class ReviewLog {
   review_status: string;
 
   // Optional notes
-  @Column({ type: 'nvarchar', nullable: true })
+  @Column({ type: 'text', nullable: true })
   comment: string | null;
 
   @Column({ length: 20, default: 'temp' })

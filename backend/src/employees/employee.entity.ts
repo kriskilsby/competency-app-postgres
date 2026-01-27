@@ -15,7 +15,7 @@ export class Employee {
   e_id: number;
 
   @Column({ length: 50, unique: true, nullable: true })
-  e_norseid: string;
+  e_norseid: string | null;
 
   // 🔹 Foreign key → legal_entity
   @ManyToOne(() => LegalEntity, { nullable: false })
@@ -25,7 +25,7 @@ export class Employee {
   // 🔹 Foreign key → discipline
   @ManyToOne(() => Discipline, { nullable: true })
   @JoinColumn({ name: 'd_id' })
-  discipline: Discipline;
+  discipline: Discipline | null;
 
   @Column({ length: 100 })
   e_fname: string;
@@ -37,7 +37,7 @@ export class Employee {
   e_job: string;
 
   @Column({ type: 'date', nullable: true })
-  e_start: Date;
+  e_start: Date | null;
 
   @Column({ length: 255 })
   e_email: string;
@@ -45,19 +45,19 @@ export class Employee {
   @Column({ length: 50 })
   e_contactno: string;
 
-  @Column({ type: 'nvarchar', nullable: true })
-  e_note: string;
+  @Column({ type: 'text', nullable: true })
+  e_note: string | null;
 
-  @CreateDateColumn({ type: 'datetime2' })
+  @CreateDateColumn({ type: 'timestamp', name: 'e_addDate' })
   e_addDate: Date;
 
-  @CreateDateColumn({ type: 'datetime2' })
+  @CreateDateColumn({ type: 'timestamp', name: 'e_eReview' })
   e_eReview: Date;
 
-  @Column({ type: 'datetime2', nullable: true })
-  e_mReview: Date;
+  @Column({ type: 'timestamp', name: 'e_mReview', nullable: true })
+  e_mReview: Date | null;
 
-  @Column({ type: 'bit', default: true })
+  @Column({ type: 'boolean', default: true })
   e_active: boolean;
 
   @Column({ length: 20, default: 'temp' })

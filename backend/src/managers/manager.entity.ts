@@ -13,7 +13,7 @@ export class Manager {
   @PrimaryGeneratedColumn()
   m_id: number;
 
-  @Column({ type: 'nvarchar', length: 50, unique: true, nullable: true })
+  @Column({ length: 50, unique: true, nullable: true })
   m_norseid: string | null;
 
   @Column({ length: 100 })
@@ -38,7 +38,7 @@ export class Manager {
   @JoinColumn({ name: 'd_id' })
   discipline: Discipline | null;
 
-  @Column({ type: 'bit', default: true })
+  @Column({ type: 'boolean', default: true })
   m_active: boolean;
 
   @Column({ length: 20, default: 'temp' })

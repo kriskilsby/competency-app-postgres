@@ -29,7 +29,7 @@ export class EmployeeProjectExperience {
   @JoinColumn({ name: 'pm_id' })
   project: ProjectMaster | null;
 
-  // 🔗 Future FK → primary_sector
+  // 🔗 Optional primary sector reference
   @Column({ type: 'int', nullable: true })
   ps_id: number | null;
 
@@ -45,40 +45,40 @@ export class EmployeeProjectExperience {
   @Column({ type: 'int', nullable: true })
   epe_contract_value: number | null;
 
-  @Column({ type: 'varchar', length: 50, nullable: true })
-  epe_stages?: string;
+  @Column({ length: 50, nullable: true })
+  epe_stages: string | null;
 
-  @Column({ type: 'bit', default: false })
+  @Column({ type: 'boolean', default: false })
   epe_high_risk: boolean;
 
-  @Column({ type: 'varchar', length: 150, nullable: true })
-  epe_contract_type?: string;
+  @Column({ length: 150 })
+  epe_contract_type: string;
 
-  @Column({ type: 'varchar', length: 150, nullable: true })
-  epe_gia: string | null;
+  @Column({ length: 50, default: 'TBC' })
+  epe_gia: string;
 
-  @Column({ type: 'text', nullable: true })
-  epe_description_1: string | null;
+  @Column({ type: 'text', default: 'TBC' })
+  epe_description_1: string;
 
-  @Column({ type: 'text', nullable: true })
-  epe_description_2: string | null;
+  @Column({ type: 'text', default: 'TBC' })
+  epe_description_2: string;
 
-  @Column({ type: 'text', nullable: true })
-  epe_description_3: string | null;
+  @Column({ type: 'text', default: 'TBC' })
+  epe_description_3: string;
 
   @Column({ type: 'text', nullable: true })
   epe_notes: string | null;
 
-  @CreateDateColumn({ type: 'datetime2' })
+  @CreateDateColumn({ type: 'timestamp' })
   epe_added_at: Date;
 
-  @CreateDateColumn({ type: 'datetime2' })
+  @CreateDateColumn({ type: 'timestamp' })
   epe_employee_reviewed_at: Date;
 
-  @Column({ type: 'datetime2', nullable: true })
+  @Column({ type: 'timestamp', nullable: true })
   epe_manager_reviewed_at: Date | null;
 
-  @Column({ type: 'bit', default: true })
+  @Column({ type: 'boolean', default: true })
   epe_active: boolean;
 
   @Column({ length: 20, default: 'temp' })
