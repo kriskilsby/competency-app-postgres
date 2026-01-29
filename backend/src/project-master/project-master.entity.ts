@@ -12,10 +12,10 @@ export class ProjectMaster {
   @Column({ length: 150 })
   pm_name: string;
 
-  @Column({ length: 150, nullable: true })
+  @Column({ type: 'varchar', length: 150, nullable: true })
   pm_location: string | null;
 
-  @Column({ length: 150, nullable: true })
+  @Column({ type: 'varchar', length: 150, nullable: true })
   pm_client: string | null;
 
   @Column({ type: 'text', nullable: true })
@@ -24,6 +24,6 @@ export class ProjectMaster {
   @Column({ type: 'boolean', default: true })
   pm_active: boolean;
 
-  @Column({ length: 20, default: 'temp' })
+  @Column({ type: 'varchar', length: 20, default: 'temp' })
   data_origin: string;
 }

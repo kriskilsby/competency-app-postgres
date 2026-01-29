@@ -45,7 +45,7 @@ export class ReviewLog {
   updated_at: Date;
 
   // Who reviewed the change
-  @Column({ length: 50, nullable: true })
+  @Column({ type: 'varchar', length: 50, nullable: true })
   review_by: string | null;
 
   // When review happened
@@ -53,13 +53,13 @@ export class ReviewLog {
   review_at: Date | null;
 
   // Pending / Reviewed
-  @Column({ length: 20, default: 'Pending' })
+  @Column({ type: 'varchar', length: 20, default: 'Pending' })
   review_status: string;
 
   // Optional notes
   @Column({ type: 'text', nullable: true })
   comment: string | null;
 
-  @Column({ length: 20, default: 'temp' })
+  @Column({ type: 'varchar', length: 20, default: 'temp' })
   data_origin: string;
 }

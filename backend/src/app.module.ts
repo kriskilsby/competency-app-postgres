@@ -26,41 +26,22 @@ import { PrimarySectorModule } from './primary-sector/primary-sector.module';
 import { ClassificationTypeModule } from './classification-type/classification-type.module';
 import { ClassificationValueModule } from './classification-value/classification-value.module';
 import { ExperienceClassificationModule } from './experience-classification/experience-classification.module';
-import { DbKeepAliveService } from './db-keep-alive.service';
 import { TestModule } from './test/test.module';
+import * as dotenv from 'dotenv';
 
-// 🔹 Inline getEnv() helper
-// const getEnv = (key: string, defaultValue = ''): string => {
-//   const value = process.env[key];
-//   if (!value) console.warn(`⚠️ Environment variable ${key} is not set.`);
-//   return (value || defaultValue).trim();
-// };
+dotenv.config({ path: './.env' });
 
 console.log('CWD:', process.cwd());
 console.log('ENV FILE CHECK DONE');
-
 @Module({
   imports: [
-    // 🔹 Database connection (POstgreSQL)
-    // TypeOrmModule.forRoot({
-    //   type: 'postgres',
-    //   host: process.env.DB_HOST,
-    //   port: 5432,
-    //   username: process.env.DB_USER,
-    //   password: process.env.DB_PASSWORD,
-    //   database: process.env.DB_NAME,
-    //   entities: [__dirname + '/**/*.entity{.ts,.js}'],
-    //   synchronize: false, // ✅ Use 'true' For dev only, remove in production
-    //   logging: ['error', 'warn'],
-    // }),
-
     TypeOrmModule.forRoot({
       type: 'postgres',
-      host: String(process.env.DB_HOST).trim(),
+      host: process.env.DB_HOST,
       port: Number(process.env.DB_PORT || 5432),
-      username: String(process.env.DB_USER).trim(),
-      password: String(process.env.DB_PASSWORD).trim(),
-      database: String(process.env.DB_NAME).trim(),
+      username: process.env.DB_USER,
+      password: String(process.env.DB_PASSWORD), // force string
+      database: process.env.DB_NAME,
       entities: [__dirname + '/**/*.entity{.ts,.js}'],
       synchronize: false,
       logging: true,
@@ -92,6 +73,6 @@ console.log('ENV FILE CHECK DONE');
     TestModule,
   ],
   controllers: [AppController],
-  providers: [AppService, DbKeepAliveService],
+  providers: [AppService],
 })
 export class AppModule {}

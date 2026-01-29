@@ -50,6 +50,6 @@ export class EmploymentHistory {
   @Column({ type: 'boolean', default: true })
   eh_active: boolean;
 
-  @Column({ length: 20, default: 'temp' })
+  @Column({ type: 'varchar', length: 20, default: 'temp' })
   data_origin: string;
 }

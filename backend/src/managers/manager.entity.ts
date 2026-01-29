@@ -13,19 +13,19 @@ export class Manager {
   @PrimaryGeneratedColumn()
   m_id: number;
 
-  @Column({ length: 50, unique: true, nullable: true })
+  @Column({ type: 'varchar', length: 50, unique: true, nullable: true })
   m_norseid: string | null;
 
-  @Column({ length: 100 })
+  @Column({ type: 'varchar', length: 100 })
   m_fname: string;
 
-  @Column({ length: 100 })
+  @Column({ type: 'varchar', length: 100 })
   m_lname: string;
 
-  @Column({ length: 150 })
+  @Column({ type: 'varchar', length: 150 })
   m_job: string;
 
-  @Column({ length: 255 })
+  @Column({ type: 'varchar', length: 255 })
   m_email: string;
 
   // 🔗 Optional FK → legal_entity

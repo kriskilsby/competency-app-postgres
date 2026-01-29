@@ -33,7 +33,7 @@ export class EmployeeProjectExperience {
   @Column({ type: 'int', nullable: true })
   ps_id: number | null;
 
-  @Column({ length: 150 })
+  @Column({ type: 'varchar', length: 150 })
   epe_service: string;
 
   @Column({ type: 'int' })
@@ -45,7 +45,7 @@ export class EmployeeProjectExperience {
   @Column({ type: 'int', nullable: true })
   epe_contract_value: number | null;
 
-  @Column({ length: 50, nullable: true })
+  @Column({ type: 'varchar', length: 50, nullable: true })
   epe_stages: string | null;
 
   @Column({ type: 'boolean', default: false })

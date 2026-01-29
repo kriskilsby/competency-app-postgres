@@ -14,7 +14,7 @@ export class Employee {
   @PrimaryGeneratedColumn()
   e_id: number;
 
-  @Column({ length: 50, unique: true, nullable: true })
+  @Column({ type: 'text', nullable: true })
   e_norseid: string | null;
 
   // 🔹 Foreign key → legal_entity

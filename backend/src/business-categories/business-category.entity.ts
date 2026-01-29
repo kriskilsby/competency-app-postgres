@@ -13,7 +13,7 @@ export class BusinessCategory {
   @Column({ length: 255, unique: true })
   bc_name: string;
 
-  @CreateDateColumn({ type: 'datetime2' })
+  @CreateDateColumn({ type: 'timestamp' })
   bc_addDate: Date;
 
   @Column({ type: 'bit', default: true })
