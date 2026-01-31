@@ -29,7 +29,8 @@ import { ExperienceClassificationModule } from './experience-classification/expe
 import { TestModule } from './test/test.module';
 import * as dotenv from 'dotenv';
 
-dotenv.config({ path: './.env' });
+// dotenv.config({ path: './.env' });
+dotenv.config();
 
 console.log('CWD:', process.cwd());
 console.log('ENV FILE CHECK DONE');
