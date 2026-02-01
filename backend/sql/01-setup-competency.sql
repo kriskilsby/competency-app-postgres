@@ -1,3 +1,4 @@
+-- backend\sql\01-setup-competency.sql
 
 -----------------------------------------------------------------
 -- ####################### SCHEMA RESET ########################    
@@ -175,7 +176,7 @@ CREATE TABLE competency_data.cpd (
     data_origin VARCHAR(20) NOT NULL DEFAULT 'temp'
 );
 
-DROP TABLE IF EXISTS competency_data.cpd CASCADE;
+-- DROP TABLE IF EXISTS competency_data.cpd CASCADE;
 
 -- Create manager table
 CREATE TABLE competency_data.manager (

@@ -43,6 +43,7 @@ console.log('ENV FILE CHECK DONE');
       username: process.env.DB_USER,
       password: String(process.env.DB_PASSWORD), // force string
       database: process.env.DB_NAME,
+      schema: 'competency_data',
       entities: [__dirname + '/**/*.entity{.ts,.js}'],
       synchronize: false,
       logging: true,

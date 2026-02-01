@@ -15,7 +15,7 @@ export class Discipline {
 
   @CreateDateColumn({
     type: 'timestamp',
-    name: 'd_addDate',
+    name: 'd_adddate',
   })
   d_addDate: Date;
 

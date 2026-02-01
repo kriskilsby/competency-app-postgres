@@ -1,3 +1,5 @@
+-- backend\sql\import-csv-code.sql
+
 -- Code to import CSV data into a SQL table
 
 -- Import legal_entity OLD VERSION NOT USED NW
@@ -11,6 +13,11 @@ COPY competency_data.legal_entity (le_name, data_origin)
 FROM 'C:\pgdata\legal-entity.csv'
 WITH (FORMAT csv, HEADER true);
 
+-- \echo 'Importing legal_entity...'
+-- \copy competency_data.legal_entity (le_name, data_origin)
+-- FROM 'C:\pgdata\legal-entity.csv'
+-- WITH (FORMAT csv, HEADER true);
+
 SELECT * FROM competency_data.legal_entity;
 SELECT COUNT(*) FROM competency_data.legal_entity;
 
@@ -22,6 +29,8 @@ FROM 'C:\pgdata\discipline.csv'
 WITH (FORMAT csv, HEADER true);
 
 SELECT * FROM competency_data.discipline;
+TRUNCATE TABLE competency_data.discipline RESTART IDENTITY CASCADE;
+Delete FROM competency_data.discipline WHERE d_id > 0;
 SELECT COUNT(*) FROM competency_data.discipline;
 
 ---------- Next Table ----------
@@ -48,6 +57,7 @@ WITH (
 
 SELECT * FROM competency_data.employee;
 SELECT COUNT(*) FROM competency_data.employee;
+TRUNCATE TABLE competency_data.employee RESTART IDENTITY CASCADE;
 
 ---------- Next Table ----------
 

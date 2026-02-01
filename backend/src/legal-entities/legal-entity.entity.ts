@@ -15,7 +15,7 @@ export class LegalEntity {
 
   @CreateDateColumn({
     type: 'timestamp',
-    name: 'le_addDate',
+    name: 'le_adddate',
   })
   le_addDate: Date;
 

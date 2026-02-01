@@ -48,13 +48,13 @@ export class Employee {
   @Column({ type: 'text', nullable: true })
   e_note: string | null;
 
-  @CreateDateColumn({ type: 'timestamp', name: 'e_addDate' })
+  @CreateDateColumn({ type: 'timestamp', name: 'e_adddate' })
   e_addDate: Date;
 
-  @CreateDateColumn({ type: 'timestamp', name: 'e_eReview' })
+  @CreateDateColumn({ type: 'timestamp', name: 'e_ereview' })
   e_eReview: Date;
 
-  @Column({ type: 'timestamp', name: 'e_mReview', nullable: true })
+  @Column({ type: 'timestamp', name: 'e_mreview', nullable: true })
   e_mReview: Date | null;
 
   @Column({ type: 'boolean', default: true })
