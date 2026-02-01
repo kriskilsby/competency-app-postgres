@@ -9,7 +9,7 @@ import {
 } from 'typeorm';
 import { Employee } from '../employees/employee.entity';
 
-@Entity({ name: 'qualifications' })
+@Entity({ name: 'qualifications', schema: 'competency_data' })
 @Check(`q_type IN ('Academic','Professional','Other')`)
 @Check(`q_year BETWEEN 1950 AND 2100`)
 export class Qualification {

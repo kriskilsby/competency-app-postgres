@@ -9,7 +9,7 @@ import {
 import { EmployeeProjectExperience } from '../employee-project-experience/employee-project-experience.entity';
 import { ClassificationValue } from '../classification-value/classification-value.entity';
 
-@Entity({ name: 'experience_classification' })
+@Entity({ name: 'experience_classification', schema: 'competency_data' })
 @Unique(['experience', 'classification_value'])
 export class ExperienceClassification {
   @PrimaryGeneratedColumn()

@@ -11,7 +11,7 @@ import {
 import { Employee } from '../employees/employee.entity';
 import { ProjectMaster } from '../project-master/project-master.entity';
 
-@Entity({ name: 'employee_project_experience' })
+@Entity({ name: 'employee_project_experience', schema: 'competency_data' })
 @Check(`epe_start BETWEEN 1950 AND 2100`)
 @Check(`epe_end BETWEEN 1950 AND 2100 OR epe_end IS NULL`)
 @Check(`epe_end IS NULL OR epe_end >= epe_start`)

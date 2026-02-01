@@ -8,7 +8,7 @@ import {
 import { LegalEntity } from '../legal-entities/legal-entity.entity';
 import { Discipline } from '../disciplines/discipline.entity';
 
-@Entity({ name: 'manager' })
+@Entity({ name: 'manager', schema: 'competency_data' })
 export class Manager {
   @PrimaryGeneratedColumn()
   m_id: number;

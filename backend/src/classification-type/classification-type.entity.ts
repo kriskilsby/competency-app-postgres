@@ -1,6 +1,6 @@
 import { Entity, PrimaryGeneratedColumn, Column } from 'typeorm';
 
-@Entity({ name: 'classification_type' })
+@Entity({ name: 'classification_type', schema: 'competency_data' })
 export class ClassificationType {
   @PrimaryGeneratedColumn()
   ct_id: number;

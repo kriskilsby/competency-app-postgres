@@ -5,7 +5,7 @@ import {
   CreateDateColumn,
 } from 'typeorm';
 
-@Entity({ name: 'legal_entity' })
+@Entity({ name: 'legal_entity', schema: 'competency_data' })
 export class LegalEntity {
   @PrimaryGeneratedColumn()
   le_id: number;

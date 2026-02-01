@@ -5,7 +5,7 @@ import {
   CreateDateColumn,
 } from 'typeorm';
 
-@Entity({ name: 'business_categories' })
+@Entity({ name: 'business_categories', schema: 'competency_data' })
 export class BusinessCategory {
   @PrimaryGeneratedColumn()
   bc_id: number;

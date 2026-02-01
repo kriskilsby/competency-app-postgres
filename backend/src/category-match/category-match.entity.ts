@@ -10,7 +10,7 @@ import {
 import { Employee } from '../employees/employee.entity';
 import { BusinessCategory } from '../business-categories/business-category.entity';
 
-@Entity({ name: 'category_match' })
+@Entity({ name: 'category_match', schema: 'competency_data' })
 @Unique(['employee', 'businessCategory'])
 export class CategoryMatch {
   @PrimaryGeneratedColumn()

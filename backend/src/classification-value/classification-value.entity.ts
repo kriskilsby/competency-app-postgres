@@ -8,7 +8,7 @@ import {
 } from 'typeorm';
 import { ClassificationType } from '../classification-type/classification-type.entity';
 
-@Entity({ name: 'classification_value' })
+@Entity({ name: 'classification_value', schema: 'competency_data' })
 @Unique(['classification_type', 'type_name'])
 export class ClassificationValue {
   @PrimaryGeneratedColumn()

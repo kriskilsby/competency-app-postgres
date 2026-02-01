@@ -4,7 +4,7 @@ import {
   Column,
 } from 'typeorm';
 
-@Entity({ name: 'project_master' })
+@Entity({ name: 'project_master', schema: 'competency_data' })
 export class ProjectMaster {
   @PrimaryGeneratedColumn()
   pm_id: number;

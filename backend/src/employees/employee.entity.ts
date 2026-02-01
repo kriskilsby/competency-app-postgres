@@ -9,7 +9,7 @@ import {
 import { LegalEntity } from '../legal-entities/legal-entity.entity';
 import { Discipline } from '../disciplines/discipline.entity';
 
-@Entity({ name: 'employee' })
+@Entity({ name: 'employee', schema: 'competency_data' })
 export class Employee {
   @PrimaryGeneratedColumn()
   e_id: number;

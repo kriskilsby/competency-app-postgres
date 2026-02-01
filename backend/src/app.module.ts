@@ -34,6 +34,9 @@ dotenv.config();
 
 console.log('CWD:', process.cwd());
 console.log('ENV FILE CHECK DONE');
+console.log('DB HOST:', process.env.DB_HOST);
+console.log('DB PORT:', process.env.DB_PORT);
+console.log('DB USER:', process.env.DB_USER);
 @Module({
   imports: [
     TypeOrmModule.forRoot({

@@ -9,7 +9,7 @@ import {
 } from 'typeorm';
 import { Employee } from '../employees/employee.entity';
 
-@Entity({ name: 'cpd' })
+@Entity({ name: 'cpd', schema: 'competency_data' })
 @Check(`cpd_year BETWEEN 1950 AND 2100`)
 export class Cpd {
   @PrimaryGeneratedColumn()
