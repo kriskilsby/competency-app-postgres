@@ -11,6 +11,13 @@ export class TestService {
   ) {}
 
   async getEmployees() {
+    const sql = this.employeeRepo
+      .createQueryBuilder('e')
+      .select()
+      .getSql();
+
+    console.log('🧪 Generated SQL:', sql);
+
     return this.employeeRepo.find({ take: 5 });
   }
 }

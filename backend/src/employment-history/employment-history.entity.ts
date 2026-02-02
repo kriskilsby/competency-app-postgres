@@ -10,7 +10,7 @@ import {
 
 import { Employee } from '../employees/employee.entity';
 
-@Entity({ name: 'employment_history' })
+@Entity({ name: 'employment_history', schema: 'competency_data' })
 @Check(`eh_start BETWEEN 1950 AND 2100`)
 @Check(`eh_end BETWEEN 1950 AND 2100 OR eh_end IS NULL`)
 @Check(`eh_end IS NULL OR eh_end >= eh_start`)
