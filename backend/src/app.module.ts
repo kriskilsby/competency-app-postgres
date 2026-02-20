@@ -38,18 +38,22 @@ console.log('DB PORT:', process.env.DB_PORT);
 console.log('DB USER:', process.env.DB_USER);
 @Module({
   imports: [
-    TypeOrmModule.forRoot({
-      type: 'postgres',
-      host: process.env.DB_HOST,
-      port: Number(process.env.DB_PORT || 5432),
-      username: process.env.DB_USER,
-      password: String(process.env.DB_PASSWORD), // force string
-      database: process.env.DB_NAME,
-      schema: 'competency_data',
-      entities: [__dirname + '/**/*.entity{.ts,.js}'],
-      synchronize: false,
-      logging: process.env.NODE_ENV !== 'test', // disable logging in tests for cleaner output
-    }),
+    ...(process.env.NODE_ENV !== 'test'
+      ? [
+          TypeOrmModule.forRoot({
+            type: 'postgres',
+            host: process.env.DB_HOST,
+            port: Number(process.env.DB_PORT || 5432),
+            username: process.env.DB_USER,
+            password: String(process.env.DB_PASSWORD),
+            database: process.env.DB_NAME,
+            schema: 'competency_data',
+            entities: [__dirname + '/**/*.entity{.ts,.js}'],
+            synchronize: false,
+            logging: true,
+          }),
+        ]
+      : []),
 
     // 🔹 Feature modules
     AuthModule,
