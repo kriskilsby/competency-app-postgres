@@ -18,9 +18,8 @@ jobs:
       # 2 Run backend tests (fail fast if any test fails)
       - name: Install dependencies & run tests
         run: |
-          set -e         # stop immediately if any command fails
-          npm ci
-          npm run test
+          npm install
+          npm run test:ci
 
       # 3 Setup SSH key for server access
       - name: Set up SSH key
