@@ -15,19 +15,25 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3
 
-      # 2 Run backend tests (fail fast if any test fails)
+      # 2 Setup Node version
+      - name: Setup Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: 20
+
+      # 3 Run backend tests
       - name: Install dependencies & run tests
         run: |
-          npm install
+          npm ci
           npm run test:ci
 
-      # 3 Setup SSH key for server access
+      # 4 Setup SSH key for server access
       - name: Set up SSH key
         uses: webfactory/ssh-agent@v0.9.1
         with:
           ssh-private-key: ${{ secrets.DEPLOY_KEY }}
 
-      # 4 Deploy via SSH to your DO/Hetzner server
+      # 5 Deploy via SSH to your DO/Hetzner server
       - name: Deploy to DigitalOcean
         run: |
           set -e
