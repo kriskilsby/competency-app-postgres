@@ -1,0 +1,33 @@
+{
+    "sqltools.connections": [
+        {
+            "ssh": "Disabled",
+            "previewLimit": 50,
+            "server": "localhost",
+            "port": 5432,
+            "driver": "PostgreSQL",
+            "name": "Test Competency Local",
+            "database": "competency_backend_test",
+            "username": "postgres",
+            "password": "IwCDeBtD08!"
+        },
+        {
+            "ssh": "Disabled",
+            "previewLimit": 50,
+            "server": "46.101.40.132",
+            "port": 5432,
+            "sshOptions": {
+                "port": 22,
+                "password": "firetrap",
+                "privateKeyPath": "C:\\Users\\krist\\.ssh\\id_ed25519_digitalocean",
+                "host": "46.101.40.132",
+                "username": "kris"
+            },
+            "driver": "PostgreSQL",
+            "name": "DigitalOcean – competency",
+            "database": "competency_db",
+            "username": "competency_user",
+            "password": "IwCDeBtD08!"
+        }
+    ]
+}

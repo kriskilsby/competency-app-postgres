@@ -1,3 +1,4 @@
+# GitHub Actions workflow for deploying the Competency Backend to DigitalOcean
 name: Deploy Competency Backend to DO
 
 on:
@@ -10,19 +11,27 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      # 1️⃣ Checkout your repo
+      # 1 Checkout repository
       - name: Checkout repository
         uses: actions/checkout@v3
 
-      # 2️⃣ Setup SSH key for server access
+      # 2 Run backend tests (fail fast if any test fails)
+      - name: Install dependencies & run tests
+        run: |
+          set -e         # stop immediately if any command fails
+          npm ci
+          npm run test
+
+      # 3 Setup SSH key for server access
       - name: Set up SSH key
         uses: webfactory/ssh-agent@v0.9.1
         with:
           ssh-private-key: ${{ secrets.DEPLOY_KEY }}
 
-      # 3️⃣ Deploy via SSH to your DO/Hetzner server
+      # 4 Deploy via SSH to your DO/Hetzner server
       - name: Deploy to DigitalOcean
         run: |
+          set -e
           ssh -o StrictHostKeyChecking=no ${{ secrets.DEPLOY_USER }}@${{ secrets.DEPLOY_HOST }} << 'EOF'
           echo "🚀 Starting deployment on server..."
           cd ${{ secrets.DEPLOY_PATH }}

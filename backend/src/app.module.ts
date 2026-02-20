@@ -26,7 +26,6 @@ import { PrimarySectorModule } from './primary-sector/primary-sector.module';
 import { ClassificationTypeModule } from './classification-type/classification-type.module';
 import { ClassificationValueModule } from './classification-value/classification-value.module';
 import { ExperienceClassificationModule } from './experience-classification/experience-classification.module';
-import { TestModule } from './test/test.module';
 import * as dotenv from 'dotenv';
 
 // dotenv.config({ path: './.env' });
@@ -49,7 +48,7 @@ console.log('DB USER:', process.env.DB_USER);
       schema: 'competency_data',
       entities: [__dirname + '/**/*.entity{.ts,.js}'],
       synchronize: false,
-      logging: true,
+      logging: process.env.NODE_ENV !== 'test', // disable logging in tests for cleaner output
     }),
 
     // 🔹 Feature modules
@@ -75,7 +74,6 @@ console.log('DB USER:', process.env.DB_USER);
     ClassificationTypeModule,
     ClassificationValueModule,
     ExperienceClassificationModule,
-    TestModule,
   ],
   controllers: [AppController],
   providers: [AppService],

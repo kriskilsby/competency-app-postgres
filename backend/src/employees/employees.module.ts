@@ -6,6 +6,7 @@ import { Employee } from './employee.entity';
 import { Qualification } from '../qualifications/qualification.entity';
 import { EmployeeProjectExperience } from '../employee-project-experience/employee-project-experience.entity';
 import { Cpd } from '../cpd/cpd.entity';
+import { EmployeesService } from './employees.service';
 
 @Module({
   imports: [
@@ -17,6 +18,6 @@ import { Cpd } from '../cpd/cpd.entity';
     ]),
   ],
   controllers: [EmployeesController],
-  providers: [],
+  providers: [EmployeesService],
 })
 export class EmployeesModule {}
